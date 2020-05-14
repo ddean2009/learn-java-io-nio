@@ -20,11 +20,11 @@ import java.util.List;
  * @version FileUsage,  2020/5/14 2:44 下午
  */
 @Slf4j
-public class FileUsage {
+public class FileCreateUsage {
 
     @Test
     public void createFileWithFile() throws IOException {
-        File file = new File("file/src/main/resources/www.flydean.com");
+        File file = new File("src/main/resources/www.flydean.com");
         //Create the file
         if (file.createNewFile()){
             log.info("恭喜，文件创建成功");
@@ -41,7 +41,7 @@ public class FileUsage {
     public  void createFileWithStream() throws IOException
     {
         String data = "www.flydean.com";
-        try(FileOutputStream out = new FileOutputStream("file/src/main/resources/www.flydean.com")){
+        try(FileOutputStream out = new FileOutputStream("src/main/resources/www.flydean.com")){
             out.write(data.getBytes());
         }
     }
@@ -50,10 +50,10 @@ public class FileUsage {
     public void createFileWithNIO()  throws IOException
     {
         String data = "www.flydean.com";
-        Files.write(Paths.get("file/src/main/resources/www.flydean.com"), data.getBytes());
+        Files.write(Paths.get("src/main/resources/www.flydean.com"), data.getBytes());
 
         List<String> lines = Arrays.asList("程序那些事", "www.flydean.com");
-        Files.write(Paths.get("file/src/main/resources/www.flydean.com"),
+        Files.write(Paths.get("src/main/resources/www.flydean.com"),
                 lines,
                 StandardCharsets.UTF_8,
                 StandardOpenOption.CREATE,
@@ -62,7 +62,7 @@ public class FileUsage {
 
     @Test
     public void fileWithPromission() throws IOException {
-        File file = File.createTempFile("file/src/main/resources/www.flydean.com","");
+        File file = File.createTempFile("src/main/resources/www.flydean.com","");
         log.info("{}",file.exists());
 
         file.setExecutable(true);
@@ -72,7 +72,7 @@ public class FileUsage {
         log.info("{}",file.canRead());
         log.info("{}",file.canWrite());
 
-        Path path = Files.createTempFile("file/src/main/resources/www.flydean.com", "");
+        Path path = Files.createTempFile("src/main/resources/www.flydean.com", "");
         log.info("{}",Files.exists(path));
         log.info("{}",Files.isReadable(path));
         log.info("{}",Files.isWritable(path));
