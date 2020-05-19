@@ -11,6 +11,8 @@
     <modules>
         <module>trywith</module>
         <module>file</module>
+        <module>watchService</module>
+        <module>file-path</module>
     </modules>
 
     <dependencies>
