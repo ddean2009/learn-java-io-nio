@@ -13,6 +13,7 @@
         <module>file</module>
         <module>watchService</module>
         <module>file-path</module>
+        <module>buffer</module>
     </modules>
 
     <dependencies>
