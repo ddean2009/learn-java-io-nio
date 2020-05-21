@@ -14,6 +14,9 @@
         <module>watchService</module>
         <module>file-path</module>
         <module>buffer</module>
+        <module>channel</module>
+        <module>mappedFiles</module>
+        <module>scatter-gather</module>
     </modules>
 
     <dependencies>
