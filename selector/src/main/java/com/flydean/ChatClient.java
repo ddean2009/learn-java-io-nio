@@ -50,6 +50,5 @@ public class ChatClient {
         response =new String(bytes).trim();
         byteBuffer.clear();
         return response;
-
     }
 }

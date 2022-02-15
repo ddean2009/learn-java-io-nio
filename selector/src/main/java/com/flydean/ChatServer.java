@@ -19,13 +19,15 @@ import java.util.Set;
 @Slf4j
 public class ChatServer {
 
-    private static String BYE_BYE="再见";
+    private static final String BYE_BYE="再见";
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        Selector selector = Selector.open();
+
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         serverSocketChannel.bind(new InetSocketAddress("localhost", 9527));
         serverSocketChannel.configureBlocking(false);
+
+        Selector selector = Selector.open();
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
         ByteBuffer byteBuffer = ByteBuffer.allocate(512);
 
@@ -39,7 +41,7 @@ public class ChatServer {
                     register(selector, serverSocketChannel);
                 }
                 if (selectionKey.isReadable()) {
-                    serverResonse(byteBuffer, selectionKey);
+                    serverResponse(byteBuffer, selectionKey);
                 }
                 iter.remove();
             }
@@ -47,7 +49,7 @@ public class ChatServer {
         }
     }
 
-    private static void serverResonse(ByteBuffer byteBuffer, SelectionKey selectionKey)
+    private static void serverResponse(ByteBuffer byteBuffer, SelectionKey selectionKey)
             throws IOException {
         SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
         socketChannel.read(byteBuffer);
